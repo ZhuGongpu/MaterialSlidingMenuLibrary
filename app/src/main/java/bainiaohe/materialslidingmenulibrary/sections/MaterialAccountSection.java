@@ -1,10 +1,12 @@
 package bainiaohe.materialslidingmenulibrary.sections;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import bainiaohe.materialslidingmenulibrary.R;
+import bainiaohe.materialslidingmenulibrary.sections.listeners.MaterialAccountSectionOnClickListener;
 import com.squareup.picasso.Picasso;
 
 
@@ -25,31 +27,40 @@ public class MaterialAccountSection extends MaterialSection {
     private TextView userName = null;
     private TextView userEmail = null;
 
-    //TODO 添加target
-    public MaterialAccountSection(Context context, String name, String email, String avatarURL, int position,
-                                  MaterialSectionOnClickListener onClickListener) {
+    private MaterialAccountSectionOnClickListener onClickListener = null;
+
+    private Intent targetIntent = null;
+    private View contentView = null;
+    private Context context = null;
+
+    public MaterialAccountSection(Context context, String name, String email, String avatarURL,
+                                  Intent targetIntent,
+                                  MaterialAccountSectionOnClickListener onClickListener) {
         super(context);
+        this.context = context;
         this.name = name;
         this.email = email;
         this.avatarURL = avatarURL;
         this.avatarResourceId = 0;
-        this.position = position;
+
         this.onClickListener = onClickListener;
+        this.targetIntent = targetIntent;
     }
 
-    //TODO 添加target
-    public MaterialAccountSection(Context context, String name, String email, int avatarResourceId, int position,
-                                  MaterialSectionOnClickListener onClickListener) {
+    public MaterialAccountSection(Context context, String name, String email, int avatarResourceId,
+                                  Intent targetIntent,
+                                  MaterialAccountSectionOnClickListener onClickListener) {
         super(context);
+        this.context = context;
         this.name = name;
         this.email = email;
         this.avatarResourceId = avatarResourceId;
         this.avatarURL = null;
-        this.position = position;
+
         this.onClickListener = onClickListener;
+        this.targetIntent = targetIntent;
     }
 
-    @Override
     public View getContentView() {
         //inflate view
         if (contentView == null) {
@@ -81,6 +92,10 @@ public class MaterialAccountSection extends MaterialSection {
             });
         }
         return contentView;
+    }
+
+    public Intent getTargetIntent() {
+        return targetIntent;
     }
 
     public int getAvatarResourceId() {
