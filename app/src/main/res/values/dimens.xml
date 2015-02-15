@@ -1,0 +1,14 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--Sliding Menu-->
+    <dimen name="shadow_width">2dp</dimen>
+    <dimen name="sliding_menu_offset">100dp</dimen>
+
+    <!--Drawer Layout-->
+    <dimen name="drawerWidth">-1dp</dimen>
+    <dimen name="userSpace">164dp</dimen>
+    <dimen name="photoMarginTop">16dp</dimen>
+</resources>
